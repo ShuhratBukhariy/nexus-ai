@@ -1,0 +1,193 @@
+/**
+ * TAILWIND CSS v4 KONFIGURATSIYASI
+ *
+ * Tailwind v4 da konfiguratsiya CSS ichida @theme direktivi orqali amalga oshiriladi.
+ * Bu yangi yondashuv - endi tailwind.config.js kerak emas!
+ *
+ * Afzalliklari:
+ * 1. Hamma narsa bir joyda - CSS faylda
+ * 2. CSS variables avtomatik yaratiladi
+ * 3. Hot reload tezroq ishlaydi
+ */
+
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/**
+ * ============================================
+ * FONTS
+ * ============================================
+ * Inter font @nuxt/fonts moduli orqali yuklanadi.
+ * Bu usul afzalroq chunki:
+ * 1. Font fayllar self-hosted (GDPR compliant)
+ * 2. Preload qilinadi (tezroq yuklash)
+ * 3. Font-display: swap avtomatik qo'shiladi
+ *
+ * Konfiguratsiya: nuxt.config.ts -> fonts
+ */
+
+/**
+ * ============================================
+ * @THEME DIREKTIVI - Tailwind v4 konfiguratsiyasi
+ * ============================================
+ *
+ * Bu yerda CSS o'zgaruvchilarini e'lon qilamiz.
+ * Tailwind ularni utility classlarga aylantiradi.
+ *
+ * Masalan: --font-family-display → font-display class hosil qiladi
+ */
+@theme {
+  /* ========== SHRIFTLAR ========== */
+  /**
+   * Font family konfiguratsiyasi
+   * --font-* prefiksi Tailwind uchun maxsus
+   * font-sans, font-display classlari hosil bo'ladi
+   */
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ========== BORDER RADIUS ========== */
+  /**
+   * Dizayndagi kartalar va buttonlar uchun radius
+   * Standart Tailwind radiuslarini kengaytirish
+   */
+  --radius-4xl: 2rem;      /* 32px - katta kartalar */
+  --radius-5xl: 2.5rem;    /* 40px - hero seksiya */
+
+  /* ========== MAXSUS RANGLAR ========== */
+  /**
+   * Dizayndagi surface ranglar
+   * Kartalar va containerlar uchun
+   */
+  --color-surface-50: oklch(0.15 0.005 260);   /* Eng ochiq surface */
+  --color-surface-100: oklch(0.13 0.005 260);  /* Kartalar uchun */
+  --color-surface-200: oklch(0.11 0.005 260);  /* Hover state */
+  --color-surface-300: oklch(0.09 0.005 260);  /* Active state */
+  --color-surface-400: oklch(0.07 0.005 260);  /* Asosiy background */
+
+  /* ========== ANIMATSIYA ========== */
+  /**
+   * Smooth animatsiyalar uchun
+   */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-fade-in: fade-in 0.5s var(--ease-smooth);
+  --animate-slide-up: slide-up 0.6s var(--ease-smooth);
+
+  /* ========== SOYALAR ========== */
+  /**
+   * Dark theme uchun subtle soyalar
+   */
+  --shadow-glow: 0 0 40px -10px oklch(0.65 0.25 250 / 0.3);
+}
+
+/**
+ * ============================================
+ * KEYFRAME ANIMATSIYALAR
+ * ============================================
+ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * ============================================
+ * GLOBAL STILLAR
+ * ============================================
+ */
+
+/**
+ * Smooth scrolling - foydalanuvchi tajribasi uchun
+ * prefers-reduced-motion - accessibility uchun muhim
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/**
+ * Body default stillar
+ * Antialiased text - font rendering yaxshilash
+ */
+body {
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * ============================================
+ * UTILITY CLASSLAR
+ * ============================================
+ * @layer utilities - Tailwind utilitylari bilan birga ishlaydi
+ */
+@layer utilities {
+  /**
+   * Text gradient - dizayndagi gradient matnlar uchun
+   * Masalan: class="text-gradient"
+   */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /**
+   * Glass effect - zamonaviy blur effekt
+   * Masalan: class="glass"
+   */
+  .glass {
+    background: oklch(0.15 0.005 260 / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(1 0 0 / 0.1);
+  }
+
+  /**
+   * Glow effect - primary rangdagi glow
+   * Buttonlar va muhim elementlar uchun
+   */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+/**
+ * ============================================
+ * DARK THEME O'ZGARUVCHILARI
+ * ============================================
+ *
+ * Nuxt UI dark mode'ni avtomatik boshqaradi.
+ * Bu yerda qo'shimcha dark theme o'zgaruvchilarini qo'shamiz.
+ *
+ * .dark class - Nuxt UI tomonidan qo'shiladi
+ */
+.dark {
+  /**
+   * Surface ranglar - kartalar va containerlar uchun
+   * CSS custom properties orqali Tailwind classlarga ulanamiz
+   */
+  --ui-bg: oklch(0.07 0.005 260);
+  --ui-bg-elevated: oklch(0.11 0.005 260);
+  --ui-bg-muted: oklch(0.13 0.005 260);
+}
