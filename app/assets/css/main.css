@@ -191,3 +191,7 @@ body {
   --ui-bg-elevated: oklch(0.11 0.005 260);
   --ui-bg-muted: oklch(0.13 0.005 260);
 }
+
+:root {
+  --ui-primary: var(--color-blue-500);
+}

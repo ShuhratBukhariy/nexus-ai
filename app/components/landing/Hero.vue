@@ -141,34 +141,35 @@ const eventInfo = {
         items-center justify-center - markazda
       -->
       <div class="hidden items-center justify-center lg:flex">
-        <!--
-          DECORATIVE SHAPE
-          ================
-          Bu yerda oddiy CSS shape ishlatamiz.
-          Real loyihada 3D model yoki SVG bo'lishi mumkin.
-
-          aspect-square - 1:1 nisbat
-          rounded-3xl - katta radius
-          rotate-12 - biroz burchak ostida
-        -->
-        <div class="relative">
-          <!-- Asosiy shakl -->
-          <div
-            class="aspect-square w-80 rounded-3xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-2xl shadow-blue-500/25"
-            style="transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);"
-          />
-
-          <!-- Ikkinchi shakl - depth uchun -->
-          <div
-            class="absolute -right-8 -top-8 aspect-square w-64 rounded-3xl bg-gradient-to-br from-blue-400 to-blue-500 opacity-80"
-            style="transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);"
-          />
-
-          <!-- Uchinchi shakl -->
-          <div
-            class="absolute -bottom-4 -left-4 aspect-square w-48 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 opacity-60"
-            style="transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);"
-          />
+        <div class="relative" style="transform: perspective(800px) rotateY(-12deg) rotateX(8deg);">
+          <!-- 3D Cross/Plus shape - Figma dizayndagi abstract shakl -->
+          <svg width="380" height="380" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Orqa qatlam - shadow effect -->
+            <g opacity="0.3" transform="translate(8, 8)">
+              <rect x="120" y="0" width="140" height="380" rx="24" fill="#1e40af"/>
+              <rect x="0" y="120" width="380" height="140" rx="24" fill="#1e40af"/>
+            </g>
+            <!-- O'rta qatlam -->
+            <g opacity="0.6" transform="translate(4, 4)">
+              <rect x="120" y="0" width="140" height="380" rx="24" fill="#2563eb"/>
+              <rect x="0" y="120" width="380" height="140" rx="24" fill="#2563eb"/>
+            </g>
+            <!-- Asosiy shakl -->
+            <rect x="120" y="0" width="140" height="380" rx="24" fill="url(#crossGrad1)"/>
+            <rect x="0" y="120" width="380" height="140" rx="24" fill="url(#crossGrad2)"/>
+            <!-- Markaziy highlight -->
+            <rect x="120" y="120" width="140" height="140" rx="0" fill="#60a5fa" opacity="0.3"/>
+            <defs>
+              <linearGradient id="crossGrad1" x1="190" y1="0" x2="190" y2="380" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3b82f6"/>
+                <stop offset="1" stop-color="#1d4ed8"/>
+              </linearGradient>
+              <linearGradient id="crossGrad2" x1="0" y1="190" x2="380" y2="190" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2563eb"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
       </div>
     </div>

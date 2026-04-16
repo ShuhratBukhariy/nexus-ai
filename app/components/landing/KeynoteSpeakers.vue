@@ -48,16 +48,13 @@ const speakers: Speaker[] = [
   },
 ]
 
-// Placeholder rasm ranglari
-const getPlaceholderColor = (index: number) => {
-  const colors = [
-    'from-blue-400 to-blue-600',
-    'from-purple-400 to-purple-600',
-    'from-emerald-400 to-emerald-600',
-    'from-orange-400 to-orange-600',
-  ]
-  return colors[index % colors.length]
-}
+// Placeholder images - B&W grayscale photos (Figma dizaynga mos)
+const speakerImages = [
+  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=450&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=450&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=450&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=450&fit=crop&q=80',
+]
 </script>
 
 <template>
@@ -107,31 +104,12 @@ const getPlaceholderColor = (index: number) => {
               aspect-[4/3] - 4:3 nisbat
               Real loyihada: NuxtImg component
             -->
-            <div
-              class="relative aspect-[4/3] overflow-hidden"
-            >
-              <!--
-                PLACEHOLDER IMAGE
-                =================
-                Gradient background + initials
-                Real loyihada haqiqiy rasm bo'ladi
-              -->
-              <div
-                :class="[
-                  'flex h-full w-full items-center justify-center bg-gradient-to-br',
-                  getPlaceholderColor(index)
-                ]"
-              >
-                <span class="text-6xl font-bold text-white/80">
-                  {{ speaker.name.split(' ').map(n => n[0]).join('') }}
-                </span>
-              </div>
-
-              <!--
-                HOVER OVERLAY
-                =============
-                Subtle gradient on hover
-              -->
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                :src="speakerImages[index]"
+                :alt="speaker.name"
+                class="h-full w-full object-cover grayscale"
+              />
               <div
                 class="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"
               />

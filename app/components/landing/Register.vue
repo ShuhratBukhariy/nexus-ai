@@ -167,83 +167,36 @@ const testimonials = [
             Secure your spot at the Next-Gen AI Summit and join the future of AI innovation.
           </p>
 
-          <!--
-            COUNTDOWN TIMER
-            ===============
-            Katta raqamlar - soat, daqiqa, soniya
-
-            font-mono - monospace font (raqamlar bir xil kenglikda)
-            tabular-nums - raqamlar bir xil kenglikda
-          -->
+          <!-- Countdown Timer - HH:MM:SS format (Figma dizaynga mos) -->
           <div class="mb-8">
-            <p class="mb-4 text-sm uppercase tracking-wider text-neutral-500">
-              Early Bird Pricing Ends in:
-            </p>
-
-            <div class="flex gap-4">
-              <!--
-                DAYS
-              -->
-              <div class="text-center">
-                <div class="mb-1 font-mono text-5xl font-bold tabular-nums text-white sm:text-6xl">
-                  {{ formatNumber(countdown.days) }}
-                </div>
-                <div class="text-xs uppercase tracking-wider text-neutral-500">
-                  Days
-                </div>
-              </div>
-
-              <!-- Separator -->
-              <div class="pt-3 text-4xl font-bold text-neutral-700">:</div>
-
-              <!--
-                HOURS
-              -->
-              <div class="text-center">
-                <div class="mb-1 font-mono text-5xl font-bold tabular-nums text-white sm:text-6xl">
-                  {{ formatNumber(countdown.hours) }}
-                </div>
-                <div class="text-xs uppercase tracking-wider text-neutral-500">
-                  Hours
-                </div>
-              </div>
-
-              <!-- Separator -->
-              <div class="pt-3 text-4xl font-bold text-neutral-700">:</div>
-
-              <!--
-                MINUTES
-              -->
-              <div class="text-center">
-                <div class="mb-1 font-mono text-5xl font-bold tabular-nums text-white sm:text-6xl">
-                  {{ formatNumber(countdown.minutes) }}
-                </div>
-                <div class="text-xs uppercase tracking-wider text-neutral-500">
-                  Mins
-                </div>
-              </div>
-
-              <!-- Separator -->
-              <div class="pt-3 text-4xl font-bold text-neutral-700">:</div>
-
-              <!--
-                SECONDS
-              -->
-              <div class="text-center">
-                <div class="mb-1 font-mono text-5xl font-bold tabular-nums text-white sm:text-6xl">
-                  {{ formatNumber(countdown.seconds) }}
-                </div>
-                <div class="text-xs uppercase tracking-wider text-neutral-500">
-                  Secs
-                </div>
-              </div>
+            <div class="flex items-baseline gap-1">
+              <span class="font-mono text-6xl font-bold tabular-nums text-white sm:text-7xl lg:text-8xl">
+                {{ formatNumber(countdown.hours + countdown.days * 24) }}
+              </span>
+              <span class="text-4xl font-bold text-neutral-600 sm:text-5xl">:</span>
+              <span class="font-mono text-6xl font-bold tabular-nums text-white sm:text-7xl lg:text-8xl">
+                {{ formatNumber(countdown.minutes) }}
+              </span>
+              <span class="text-4xl font-bold text-neutral-600 sm:text-5xl">:</span>
+              <span class="font-mono text-6xl font-bold tabular-nums text-white sm:text-7xl lg:text-8xl">
+                {{ formatNumber(countdown.seconds) }}
+              </span>
             </div>
           </div>
 
-          <!--
-            REGISTER BUTTON
-            ===============
-          -->
+          <!-- Blue starburst graphic - Figma dizaynga mos -->
+          <div class="mb-8">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(60,60)">
+                <circle r="8" fill="#3b82f6"/>
+                <g v-for="i in 24" :key="i" :transform="`rotate(${i * 15})`">
+                  <line x1="0" y1="12" x2="0" y2="55" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Register Button -->
           <UButton
             size="xl"
             class="w-full rounded-xl sm:w-auto"

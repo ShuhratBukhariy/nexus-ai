@@ -16,12 +16,12 @@
 // Feature cards data
 const features = [
   {
-    id: 'speakers',
-    title: 'Speakers',
+    id: 'sponsors',
+    title: 'Sponsors',
     description: 'Hear from global AI leaders, researchers, and entrepreneurs who are defining the future of artificial intelligence.',
-    variant: 'primary', // Ko'k fon
+    variant: 'primary',
     hasAvatars: true,
-    link: { label: 'And more', to: '#speakers' },
+    link: { label: 'And more', to: '#partners' },
   },
   {
     id: 'technologies',
@@ -92,7 +92,7 @@ const avatars = [
 
           <!-- Title -->
           <h3 class="mb-4 text-2xl font-bold text-white">
-            Speakers
+            Sponsors
           </h3>
 
           <!-- Description -->

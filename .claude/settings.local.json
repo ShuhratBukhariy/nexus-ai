@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__33279510-4901-441c-96c6-3e06dff0a4c7__get_design_context",
+      "mcp__33279510-4901-441c-96c6-3e06dff0a4c7__get_metadata",
+      "mcp__33279510-4901-441c-96c6-3e06dff0a4c7__get_screenshot",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
